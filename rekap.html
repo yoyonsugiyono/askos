@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekapitulasi Jadwal Penggunaan Pakaian Dinas ASN GTK Dikdas Kab. Sampang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tambahkan library html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Print Styles Optimized for A4 Single Page Portrait */
+        @media print {
+            @page {
+                size: A4 portrait; 
+                margin: 1.5cm; /* Margin 1.5 cm */
+            }
+            
+            body { 
+                background: white !important; 
+                -webkit-print-color-adjust: exact; 
+                font-size: 14pt; /* Body tetap 14pt */
+                width: 100%;
+                height: 100%;
+            }
+
+            .no-print { display: none !important; }
+            
+            /* Header Print - CENTER ALIGNMENT FORCED */
+            .print-header { 
+                display: block !important; 
+                margin-bottom: 15px;
+                border-bottom: 2px solid black;
+                text-align: center !important; /* Force Center */
+                width: 100%;
+                padding-bottom: 5px;
+            }
+            .print-header h1 { font-size: 18pt; font-weight: bold; margin: 0; line-height: 1.2; text-align: center; }
+            .print-header h2 { font-size: 16pt; font-weight: bold; margin: 0; text-align: center; }
+            .print-header p { font-size: 14pt; margin: 5px 0 5px 0; text-align: center; }
+
+            /* Container Reset */
+            .max-w-7xl { 
+                max-width: 100% !important; 
+                padding: 0 !important; 
+                margin: 0 !important; 
+                box-shadow: none !important;
+            }
+            
+            /* Table Optimizations */
+            .shadow-xl { box-shadow: none !important; }
+            .rounded-xl { border-radius: 0 !important; border: none !important; overflow: visible !important; }
+            
+            table { 
+                width: 100%; 
+                font-size: 13pt; 
+                border-collapse: collapse; 
+                margin-top: 10px;
+                margin-bottom: 5px !important; /* Jarak bawah tabel dikurangi */
+                border-bottom: 2px solid #000 !important; 
+            }
+            
+            /* HEADER TABEL KHUSUS: Font 12pt */
+            thead th {
+                color: black !important;
+                background-color: #e5e7eb !important; 
+                border: 1px solid #000 !important;
+                padding: 6px 4px !important;
+                font-size: 12pt !important; 
+                vertical-align: middle;
+                line-height: 1.3;
+            }
+            
+            thead th span {
+                font-size: 12pt !important; 
+                font-weight: normal;
+                opacity: 1 !important; 
+            }
+
+            tbody td { 
+                border: 1px solid #000 !important; 
+                padding: 6px 4px !important;
+                vertical-align: top;
+            }
+
+            /* Kolom Warna */
+            .print-bg-orange { background-color: #ffedd5 !important; }
+            .print-bg-blue { background-color: #dbeafe !important; }
+            .print-bg-pink { background-color: #fce7f3 !important; }
+            .print-bg-teal { background-color: #ccfbf1 !important; }
+
+            /* Footer Notes */
+            .footer-notes {
+                font-size: 11pt !important;
+                margin-top: 10px !important; 
+                padding: 0 !important;
+                border: none !important;
+                page-break-inside: avoid;
+            }
+            
+            .footer-notes ul li, .footer-notes ol li {
+                margin-bottom: 2px;
+            }
+            
+            /* Info Pengembang di Print */
+            .dev-info-container {
+                display: block !important;
+                text-align: right;
+                margin-top: 2px !important; 
+                margin-bottom: 10px !important;
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+            }
+            
+            /* Memaksa ukuran font 10pt saat print */
+            .dev-info-text {
+                font-size: 10pt !important; 
+                color: black !important;
+                font-style: italic;
+            }
+
+            /* Hide URL prints */
+            a[href]:after { content: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- BACKGROUND IMAGE -->
+    <img id="customBackground" 
+         src="bagroundasn.jpg" 
+         onerror="this.style.display='none'"
+         alt="Background Image" 
+         class="fixed top-0 left-0 w-full h-full object-cover -z-50 opacity-20 no-print">
+
+    <!-- WRAPPER UNTUK PDF/PRINT (ID: printableArea) -->
+    <div id="printableArea" class="max-w-7xl mx-auto p-4 md:p-8 w-full flex-grow bg-transparent">
+        
+        <!-- Web Header (Hidden on Print, but visible on web) -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 no-print" data-html2canvas-ignore="true">
+            <div class="flex items-center gap-4 mb-4 md:mb-0">
+                <a href="ASKOS_SAMPANG_REVISI.html" class="flex items-center text-blue-700 font-bold hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Kembali ke ASKOS
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-blue-900">REKAPITULASI PENGGUNAAN PAKAIAN DINAS</h1>
+                <p class="text-sm text-gray-600">ASN GTK Dikdas Kab. Sampang</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                 <img src="yoyonsugiyono.jpg" 
+                      onerror="this.src='https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff'"
+                      class="w-10 h-10 rounded-full border-2 border-white shadow bg-gray-200 object-cover">
+                 <div class="text-xs text-right hidden md:block">
+                     <p class="font-bold text-gray-800">Yoyon Sugiyono, S.Pd., M.Pd., Gr.</p>
+                     <p class="text-gray-500">UPTD SDN Margantoko 2</p>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Print Header (Visible only on Print/PDF) -->
+        <!-- Added explicit style for center alignment to ensure PDF capture respects it -->
+        <div id="pdfHeader" class="hidden print-header" style="text-align: center; width: 100%;">
+            <h1 style="text-align: center; font-weight: bold; margin: 0;">REKAPITULASI JADWAL PENGGUNAAN PAKAIAN DINAS</h1>
+            <h2 style="text-align: center; font-weight: bold; margin: 0;">ASN Guru & Tenaga Kependidikan Dikdas Kab. Sampang</h2>
+            <p id="printYearInfo" style="text-align: center; margin: 5px 0; font-weight: bold;"></p>
+        </div>
+
+        <!-- Controls (Hidden on Print/PDF) -->
+        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6 flex flex-wrap gap-4 justify-between items-center no-print" data-html2canvas-ignore="true">
+            <div class="flex items-center gap-2">
+                <label for="yearSelect" class="font-semibold text-gray-700">Pilih Tahun:</label>
+                <select id="yearSelect" class="border-gray-300 border rounded-md px-3 py-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm bg-gray-50">
+                    <!-- JS will populate -->
+                </select>
+            </div>
+            
+            <div class="flex gap-2">
+                <!-- Tombol Cetak -->
+                <button onclick="window.print()" class="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-md font-bold shadow flex items-center gap-2 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    Cetak
+                </button>
+
+                <!-- Tombol Unduh PDF -->
+                <button onclick="downloadPDF()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-bold shadow flex items-center gap-2 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Unduh PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- The Table -->
+        <div id="tableContainer" class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 print:border-none print:shadow-none print:overflow-visible">
+            <div class="overflow-x-auto print:overflow-visible">
+                <table class="w-full text-sm text-left text-gray-700">
+                    <thead class="text-xs text-white uppercase bg-blue-900 text-center print:text-black print:bg-gray-200">
+                        <tr>
+                            <th scope="col" class="px-2 py-3 w-8 border-r border-blue-800 print:w-[5%] print:py-2 print:border-black print-bg-header">No</th>
+                            <th scope="col" class="px-2 py-3 w-20 border-r border-blue-800 print:w-[15%] print:py-2 print:border-black print-bg-header">Bulan</th>
+                            
+                            <!-- Kolom Jadwal -->
+                            <th scope="col" class="px-2 py-3 bg-orange-600 border-r border-orange-500 w-1/5 print:w-[20%] print:py-2 print:border-black print-bg-orange">
+                                Batik Trunojoyo<br>
+                                <span class="normal-case text-[9px] opacity-80 print:text-[12pt]">(Kamis & Jumat Mg 1)</span>
+                            </th>
+                            <th scope="col" class="px-2 py-3 bg-blue-800 border-r border-blue-700 w-1/5 print:w-[20%] print:py-2 print:border-black print-bg-blue">
+                                Batik KORPRI<br>
+                                <span class="normal-case text-[9px] opacity-80 print:text-[12pt]">(Tgl 17 & Kamis Lain)</span>
+                            </th>
+                            <th scope="col" class="px-2 py-3 bg-pink-700 border-r border-pink-600 w-1/5 print:w-[20%] print:py-2 print:border-black print-bg-pink">
+                                Busana Adat<br>
+                                <span class="normal-case text-[9px] opacity-80 print:text-[12pt]">(Kamis Mg 3)</span>
+                            </th>
+                            <th scope="col" class="px-2 py-3 bg-teal-700 w-1/5 print:w-[20%] print:py-2 print:border-black print-bg-teal">
+                                Batik PGRI<br>
+                                <span class="normal-case text-[9px] opacity-80 print:text-[12pt]">(Kamis & Jumat Mg 4)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody" class="divide-y divide-gray-200">
+                        <!-- JS Generated Rows -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- INFO PENGEMBANG -->
+            <div class="dev-info-container px-4 py-2 bg-gray-50 border-t border-b border-gray-200 text-right print:bg-white print:px-0 print:py-2 print:border-t-0 print:border-b-2 print:border-black">
+                <p class="dev-info-text font-bold text-gray-800 text-[10pt] mb-1 print:text-black print:text-[10pt] print:mb-0">
+                    Pengembang Aplikasi: Yoyon Sugiyono, S.Pd., M.Pd., Gr.
+                </p>
+                <p class="dev-info-text text-gray-500 italic text-[10pt] print:text-black print:text-[10pt] print:mt-0">
+                    Sumber: yoyonsugiyono.github.io
+                </p>
+            </div>
+            
+            <!-- Table Footer Notes -->
+            <div class="footer-notes p-4 bg-gray-50 border-t border-gray-200 text-xs text-gray-600 print:bg-white print:p-0 print:border-none">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-2 print:gap-4">
+                    <!-- Kolom Kiri: Ketentuan & Catatan Penting -->
+                    <div>
+                        <p class="font-bold mb-1">Ketentuan & Harmonisasi Aturan:</p>
+                        <ul class="list-none space-y-0.5 mb-2 pl-0">
+                            <li>• Jadwal khusus di Tgl 17 diganti <strong>KORPRI</strong> (Wajib Peci).</li>
+                            <li>• Batik Trunojoyo, Adat, & Biasa wajib <strong>Odheng</strong> (Laki-laki).</li>
+                            <li>• Batik KORPRI dan PGRI <strong>tidak</strong> pakai Odheng.</li>
+                        </ul>
+                        
+                        <!-- CATATAN PENTING -->
+                        <div class="mt-2 mb-2 p-2 bg-red-50 border border-red-200 rounded text-red-900 text-[10px] leading-tight print:bg-transparent print:border print:border-black print:p-2 print:text-black print:text-[10pt]">
+                            <strong>Catatan Penting (Harmonisasi Aturan):</strong><br>
+                            1. Jika jadwal reguler bertepatan dengan <strong>Tanggal 17</strong>, maka <strong>WAJIB Batik KORPRI</strong> (Prioritas Tertinggi).<br>
+                            2. Jika jadwal <strong>Kamis (KORPRI)</strong> bertepatan dengan jadwal khusus Daerah (Trunojoyo/Adat) atau PGRI, maka Batik KORPRI <strong>digantikan</strong> oleh seragam khusus tersebut.
+                        </div>
+                    </div>
+                    
+                    <!-- Kolom Kanan: Dasar Hukum & INFO SISTEM -->
+                    <div>
+                        <div class="pt-2 md:pt-0 border-t md:border-none border-gray-300 print:border-none">
+                            <p class="font-bold mb-1">Dasar Hukum:</p>
+                            <ol class="list-decimal list-inside space-y-0.5 text-[9px] text-gray-600 print:text-black print:text-[10pt]">
+                                <li>SE Kepala BKN No. 2 Th 2026 (Batik KORPRI).</li>
+                                <li>Perbup Sampang No. 4 Th 2026 (Pakaian Dinas).</li>
+                                <li>SE Bupati Sampang No. 000.8.3/25/434.032/2026.</li>
+                                <li>SE Dinas Pendidikan No. 400.3/82/434.201/2026.</li>
+                                <li>SE Dinas Pendidikan No. 400.3/83/434.201/2026 (PGRI).</li>
+                            </ol>
+                        </div>
+
+                        <!-- INFO SISTEM -->
+                        <div class="mt-2 p-2 bg-yellow-50 border border-yellow-200 rounded text-yellow-800 text-[10px] leading-tight print:bg-transparent print:border-none print:p-0 print:text-black print:text-[10pt]">
+                            <strong>Info Sistem:</strong> Aplikasi ini hanya memfilter Hari Minggu sebagai hari libur. Hari Libur Nasional dan Cuti Bersama diabaikan (tetap menampilkan jadwal seragam kerja).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        
+        // Setup Year Selector
+        const currentYear = new Date().getFullYear();
+        const select = document.getElementById('yearSelect');
+        const startYear = 2026; 
+        
+        for (let i = 0; i <= 5; i++) {
+            let y = startYear + i;
+            let opt = document.createElement('option');
+            opt.value = y;
+            opt.innerHTML = `Tahun ${y}`;
+            select.appendChild(opt);
+        }
+
+        select.addEventListener('change', (e) => {
+            generateTable(parseInt(e.target.value));
+        });
+
+        // Initial Generation
+        generateTable(startYear);
+
+        function generateTable(year) {
+            document.getElementById('printYearInfo').innerText = `TAHUN ${year}`;
+            const tbody = document.getElementById('scheduleBody');
+            tbody.innerHTML = '';
+
+            for (let m = 0; m < 12; m++) {
+                const row = document.createElement('tr');
+                row.className = m % 2 === 0 ? 'bg-white' : 'bg-gray-50 print:bg-white'; 
+
+                let trunojoyoDates = [];
+                let korpriDates = [];
+                let adatDates = [];
+                let pgriDates = [];
+
+                let thursdays = getDaysInMonth(year, m, 4); 
+                let fridays = getDaysInMonth(year, m, 5);   
+
+                // A. TRUNOJOYO (Kamis ke-1 & Jumat ke-1)
+                if (thursdays[0]) trunojoyoDates.push(thursdays[0]);
+                if (fridays[0]) trunojoyoDates.push(fridays[0]);
+
+                // B. ADAT (Kamis ke-3)
+                if (thursdays[2]) adatDates.push(thursdays[2]);
+
+                // C. PGRI (Kamis ke-4 & Jumat ke-4) - UPDATED!
+                if (thursdays[3]) pgriDates.push(thursdays[3]);
+                if (fridays[3]) pgriDates.push(fridays[3]);
+
+                // D. KORPRI (Kamis Sisa: ke-2 & ke-5)
+                if (thursdays[1]) korpriDates.push(thursdays[1]); 
+                if (thursdays[4]) korpriDates.push(thursdays[4]); 
+
+                // E. TANGGAL 17
+                let date17 = new Date(year, m, 17);
+                
+                // --- HARMONISASI ---
+                trunojoyoDates = trunojoyoDates.filter(d => {
+                    if (d.getDate() === 17) { korpriDates.push(d); return false; }
+                    return true;
+                });
+                adatDates = adatDates.filter(d => {
+                    if (d.getDate() === 17) { korpriDates.push(d); return false; }
+                    return true;
+                });
+                pgriDates = pgriDates.filter(d => {
+                    if (d.getDate() === 17) { korpriDates.push(d); return false; }
+                    return true;
+                });
+                let has17 = korpriDates.some(d => d.getDate() === 17);
+                if (!has17) { korpriDates.push(date17); }
+
+                // SORTING TANGGAL (Penting agar tampilan urut)
+                korpriDates.sort((a, b) => a - b);
+                trunojoyoDates.sort((a, b) => a - b);
+                pgriDates.sort((a, b) => a - b);
+
+                // Tambahkan 'text-center' dan 'print:text-center' pada kolom tanggal
+                row.innerHTML = `
+                    <td class="px-2 py-3 text-center font-medium border-r border-gray-200 print:py-4 print:border-black">${m + 1}</td>
+                    <td class="px-2 py-3 font-bold text-gray-800 border-r border-gray-200 print:py-4 print:border-black">${monthNames[m]}</td>
+                    <td class="px-2 py-3 border-r border-gray-200 text-center bg-orange-50/50 print:bg-white print:py-4 print:border-black print-bg-orange print:text-center">${formatDateList(trunojoyoDates)}</td>
+                    <td class="px-2 py-3 border-r border-gray-200 text-center bg-blue-50/50 font-semibold text-blue-900 print:text-black print:bg-white print:py-4 print:border-black print-bg-blue print:text-center">${formatDateList(korpriDates)}</td>
+                    <td class="px-2 py-3 border-r border-gray-200 text-center bg-pink-50/50 text-pink-900 print:text-black print:bg-white print:py-4 print:border-black print-bg-pink print:text-center">${formatDateList(adatDates)}</td>
+                    <td class="px-2 py-3 bg-teal-50/50 text-center text-teal-900 print:text-black print:bg-white print:py-4 print:border-black print-bg-teal print:text-center">${formatDateList(pgriDates)}</td>
+                `;
+                tbody.appendChild(row);
+            }
+        }
+
+        function getDaysInMonth(year, month, dayIndex) {
+            let result = [];
+            let date = new Date(year, month, 1);
+            while (date.getDay() !== dayIndex) { date.setDate(date.getDate() + 1); }
+            while (date.getMonth() === month) { result.push(new Date(date.getTime())); date.setDate(date.getDate() + 7); }
+            return result;
+        }
+
+        function formatDateList(dates) {
+            if (dates.length === 0) return "-";
+            return dates.map(d => {
+                let str = d.getDate(); 
+                if (d.getDate() === 17) return `<span class="text-red-600 font-bold print:text-black print:font-bold">${str}</span>`;
+                return str;
+            }).join(', ');
+        }
+
+        // FUNGSI UNDUH PDF
+        function downloadPDF() {
+            // 1. Siapkan elemen
+            const element = document.getElementById('printableArea');
+            const header = document.getElementById('pdfHeader');
+            const yearVal = document.getElementById('yearSelect').value;
+            
+            // 2. Tampilkan header khusus print sementara untuk PDF
+            header.classList.remove('hidden'); 
+            
+            // Opsi html2pdf
+            const opt = {
+                margin:       [10, 10, 10, 10], // Margin mm [top, left, bottom, right] - disesuaikan agar muat
+                filename:     `Rekap_Busana_ASN_Sampang_${yearVal}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 }, // Scale 2 untuk kualitas lebih baik
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // 3. Generate PDF
+            html2pdf().from(element).set(opt).save().then(() => {
+                // 4. Sembunyikan kembali header setelah selesai
+                header.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

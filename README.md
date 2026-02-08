@@ -1,2 +1,2 @@
-# askos
-Aplikasi Anti Salah Kostum (ASKOS)
+# askos-kode
+Kode Anti Salah Kostum
